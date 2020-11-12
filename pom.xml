@@ -3,7 +3,7 @@
   <groupId>com.github.PeadarC</groupId>
   <artifactId>Repository2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+  <packaging>jar</packaging>
   <url>https://github.com/#PeadarC/Repository2/0.1</url>
   
 </project>
