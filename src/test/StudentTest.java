@@ -1,14 +1,17 @@
-package studentReg2;
+package stuReg3;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import studentReg.Student;
+
 public class StudentTest {
 	
 	String name = "Jimi Hendrix";
-	String age = "19";
-	Student student = new Student(name, age);
+	int age = 19;
+	int id = 17461562;
+	Student student = new Student(name, age, null, id);
 	
 	String username = name + age;
 	
