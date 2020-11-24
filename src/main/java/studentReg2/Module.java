@@ -1,43 +1,51 @@
 package studentReg2;
 
-import studentReg2.Course;
-import studentReg2.Student;
+import org.joda.time.DateTime;
+import java.util.ArrayList;
 
 public class Module {
 
-	  // instance variables
-	  String moduleName;
-	  Student[] students;
-	  Course[] courses;
-	  // constructor
-	  public Module(String moduleName,Student[] students,Course[] courses){
-	    this.moduleName = moduleName;
-	    this.students = students;
-	    this.courses = courses;
-	  }
+    private String moduleName;
+    private String moduleID;
+    private ArrayList<Student> moduleStudents = new ArrayList<Student>();
+    private ArrayList<CourseProgramme> moduleCourses = new ArrayList<CourseProgramme>();
 
-	  // setters 
+    public Module(String moduleName, String moduleID) {
+        this.moduleName = moduleName;
+        this.moduleID = moduleID;
+    }
 
-	  public void setModuleName(String moduleName){
-	    this.moduleName = moduleName;
-	  }
-	  public void setStudents(Student[] students){
-	    this.students = students;
-	  }
-	  public void setCourses(Course[] courses){
-	    this.courses = courses;
-	  }
 
-	  // getters 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this ) {
+            return true;
+        }
+        if(!(obj instanceof Module)) {
+            return false;
+        }
 
-	  public String getModuleName(){
-	    return this.moduleName;
-	  }
-	  public Student[] getStudents(){
-	    return this.students;
-	  }
-	  public Course[] getCourses(){
-	    return this.courses;
-	  }
+        Module module = (Module) obj;
+        return this.moduleName == module.moduleName && this.moduleID == module.moduleID;
+    }
 
+    public void addStudent(Student student) {
+        moduleStudents.add(student);
+    }
+
+    public void addCourse(CourseProgramme courses) {
+        moduleCourses.add(courses);
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public ArrayList<Student> getModuleStudents() {
+        return moduleStudents;
+    }
+
+    public ArrayList<CourseProgramme> getModuleCourses() {
+        return moduleCourses;
+    }
 }
