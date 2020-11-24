@@ -1,59 +1,60 @@
 package studentReg2;
 
-import java.util.Date;
+import org.joda.time.DateTime;
+import java.util.ArrayList;
 
-import studentReg2.Module;
-import studentReg2.Student;
+public class CourseProgramme {
 
-public class Course {
+    private String courseName;
+    private ArrayList<Student> courseStudents = new ArrayList<Student>();
+    private ArrayList<Module> courseModules = new ArrayList<Module>();
+    private DateTime startDate;
+    private DateTime endDate;
 
-	String courseName;
-	Module[] modules;
-	Student[] students;
-	Date startDate;
-	Date endDate;
-	// constructors
-	public Course(String courseName, Module[] modules,Student[] students, Date startDate, Date endDate){
-	 this.courseName = courseName;
-	 this.modules = modules;
-	 this.students = students;
-	 this.startDate = startDate;
-	 this.endDate = endDate;
-	}
+    public CourseProgramme(String courseName, DateTime startDate, DateTime endDate) {
+        this.courseName = courseName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
-	// setters 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this ) {
+            return true;
+        }
+        if(!(obj instanceof CourseProgramme)) {
+            return false;
+        }
 
-	public void setCourseName(String courseName){
-	 this.courseName = courseName;
-	}
-	public void setModules(Module[] modules){
-	 this.modules = modules;
-	}
-	public void setStudents(Student[] students){
-	 this.students = students;
-	}
-	public void setStartDate(Date startDate){
-	 this.startDate = startDate;
-	}
-	public void setEndDate(Date endDate){
-	 this.endDate = endDate;
-	}
+        CourseProgramme courseProgramme = (CourseProgramme) obj;
+        return this.courseName == courseProgramme.courseName && this.startDate == courseProgramme.startDate && this.endDate == courseProgramme.endDate;
+    }
 
-	// getters 
+    public void addStudent(Student student) {
+        courseStudents.add(student);
+    }
 
-	public String getCourseName(){
-	 return this.courseName; 
-	}
-	public Module[] getModules(){
-	 return this.modules;
-	}
-	public Student[] getStudents(){
-	 return this.students;
-	}
-	public Date getStartDate(){
-	 return this.startDate;
-	}
-	public Date getEndDate(){
-	 return this.endDate;
-	}
+    public void addModule(Module module) {
+        courseModules.add(module);
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public ArrayList<Student> getCourseStudents() {
+        return courseStudents;
+    }
+
+    public ArrayList<Module> getCourseModules() {
+        return courseModules;
+    }
+
+    public DateTime getStartDate() {
+        return startDate;
+    }
+
+    public DateTime getEndDate() {
+        return endDate;
+    }
 }
